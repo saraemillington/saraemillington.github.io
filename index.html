@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Name — Senior Data Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:          #fafaf8;
+      --surface:     #f4f3ef;
+      --surface2:    #eceae3;
+      --border:      #dddbd2;
+      --accent:      #1a4fcc;
+      --accent-lt:   #eef2fc;
+      --text:        #18181b;
+      --muted:       #6b6b72;
+      --serif:       'Lora', Georgia, serif;
+      --sans:        'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.75; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,250,248,.93); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-family: var(--serif); font-size: 1.05rem; color: var(--text); text-decoration: none; font-weight: 600; }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .8rem; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── Container ── */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+      padding: 8rem 2.5rem 5rem; border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .hero-inner { max-width: 660px; }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: .75rem;
+      font-size: .75rem; font-weight: 600; color: var(--accent);
+      letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.75rem;
+      opacity: 0; animation: fadeUp .5s .1s ease forwards;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+    h1 {
+      font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 600; line-height: 1.18; letter-spacing: -.01em; margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp .6s .2s ease forwards;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--muted); max-width: 520px;
+      font-weight: 300; margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp .6s .3s ease forwards;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp .6s .4s ease forwards; }
+    .btn { display: inline-block; padding: .7rem 1.6rem; font-size: .82rem; font-weight: 600; letter-spacing: .04em; text-decoration: none; border-radius: 3px; transition: all .2s; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #1340a8; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(26,79,204,.22); }
+    .btn-outline { border: 1.5px solid var(--border); color: var(--muted); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* decorative right grid */
+    .hero-grid {
+      position: absolute; right: 0; top: 0; bottom: 0; width: 38%;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px; opacity: .5;
+      mask-image: linear-gradient(to left, rgba(0,0,0,.5), transparent);
+    }
+    .hero-years { position: absolute; right: 3rem; bottom: 3rem; text-align: right; }
+    .hero-years .num { display: block; font-family: var(--serif); font-size: 5.5rem; font-weight: 600; color: var(--surface2); line-height: 1; }
+    .hero-years .label { font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--border); }
+
+    /* ── Section shell ── */
+    section { padding: 6rem 0; }
+    section + section { border-top: 1px solid var(--border); }
+    .section-header { margin-bottom: 3.5rem; }
+    .section-eyebrow { font-size: .72rem; font-weight: 600; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem; }
+    .section-eyebrow::before { content: ''; display: block; width: 18px; height: 1px; background: var(--accent); }
+    .section-title { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 600; line-height: 1.25; }
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ── Impact (dark band) ── */
+    #impact { background: var(--text); color: #fff; }
+    #impact .section-eyebrow { color: #7aa3f7; }
+    #impact .section-eyebrow::before { background: #7aa3f7; }
+    #impact .section-title { color: #fff; }
+    #impact .section-title em { color: #7aa3f7; }
+    .impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(255,255,255,.1); border-radius: 6px; overflow: hidden; margin-top: 3rem; }
+    .impact-card { padding: 2.5rem 2rem; border-right: 1px solid rgba(255,255,255,.1); transition: background .2s; }
+    .impact-card:last-child { border-right: none; }
+    .impact-card:hover { background: rgba(255,255,255,.04); }
+    .impact-num { display: block; font-family: var(--serif); font-size: 2.8rem; font-weight: 600; color: #7aa3f7; line-height: 1; margin-bottom: .5rem; }
+    .impact-label { font-size: .82rem; color: rgba(255,255,255,.5); font-weight: 300; }
+
+    /* ── About ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p { color: var(--muted); margin-bottom: 1.1rem; font-weight: 300; }
+    .about-text strong { color: var(--text); font-weight: 600; }
+    .about-callout { background: var(--accent-lt); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 0 4px 4px 0; margin-top: 1.5rem; }
+    .about-callout p { color: var(--accent); font-size: .9rem; margin: 0; font-weight: 500; font-style: italic; }
+
+    /* timeline */
+    .timeline { position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: .45rem; bottom: 0; width: 1px; background: var(--border); }
+    .timeline-item { padding-left: 1.5rem; padding-bottom: 2rem; position: relative; }
+    .timeline-item::before { content: ''; position: absolute; left: -4px; top: .5rem; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
+    .tl-date { font-size: .7rem; font-weight: 600; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .2rem; }
+    .tl-role { font-weight: 600; font-size: .95rem; margin-bottom: .15rem; }
+    .tl-place { color: var(--muted); font-size: .85rem; margin-bottom: .35rem; }
+    .tl-desc { color: var(--muted); font-size: .84rem; font-weight: 300; line-height: 1.6; }
+
+    /* ── Skills ── */
+    #skills { background: var(--surface); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .skill-group { background: var(--bg); padding: 1.75rem; transition: background .2s; }
+    .skill-group:hover { background: var(--accent-lt); }
+    .skill-group-title { font-size: .68rem; font-weight: 700; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tag { font-size: .73rem; font-weight: 500; padding: .22rem .6rem; border-radius: 99px; background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+
+    /* ── Projects ── */
+    .projects-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .project-row { background: var(--bg); display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; padding: 2.25rem 2rem; transition: background .2s; align-items: start; }
+    .project-row:hover { background: var(--accent-lt); }
+    .project-num { font-family: var(--serif); font-size: .85rem; color: var(--border); margin-bottom: .4rem; }
+    .project-title { font-weight: 600; font-size: 1.05rem; margin-bottom: .5rem; }
+    .project-desc { color: var(--muted); font-size: .88rem; font-weight: 300; line-height: 1.65; margin-bottom: .9rem; }
+    .project-link { display: inline-flex; align-items: center; gap: .35rem; font-size: .78rem; font-weight: 600; color: var(--accent); text-decoration: none; letter-spacing: .03em; transition: gap .15s; }
+    .project-link:hover { gap: .6rem; }
+    .project-tools { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: flex-end; padding-top: .3rem; }
+    .project-tag { font-size: .7rem; font-weight: 600; padding: .2rem .55rem; border-radius: 3px; background: var(--accent-lt); color: var(--accent); border: 1px solid rgba(26,79,204,.15); }
+
+    /* ── Contact (dark) ── */
+    #contact { background: var(--text); color: #fff; text-align: center; }
+    #contact .section-eyebrow { color: #7aa3f7; justify-content: center; }
+    #contact .section-eyebrow::before { background: #7aa3f7; }
+    #contact .section-title { color: #fff; }
+    #contact .section-header { text-align: center; margin-bottom: 1.5rem; }
+    .contact-sub { color: rgba(255,255,255,.5); font-weight: 300; margin-bottom: 2.5rem; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .contact-link { display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1.4rem; border: 1px solid rgba(255,255,255,.15); border-radius: 3px; font-size: .82rem; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; transition: all .2s; }
+    .contact-link:hover { border-color: #7aa3f7; color: #7aa3f7; }
+
+    /* ── Footer ── */
+    footer { text-align: center; padding: 1.75rem; font-size: .75rem; color: var(--muted); border-top: 1px solid var(--border); }
+
+    /* ── Animations ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d { transition-delay: .15s; }
+
+    @media (max-width: 768px) {
+      .two-col { grid-template-columns: 1fr; gap: 3rem; }
+      .impact-grid { grid-template-columns: 1fr 1fr; }
+      .impact-card { border-bottom: 1px solid rgba(255,255,255,.1); }
+      .project-row { grid-template-columns: 1fr; }
+      .project-tools { justify-content: flex-start; }
+      .nav-links { display: none; }
+      .hero-grid, .hero-years { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#hero">Your Name</a>
+  <ul class="nav-links">
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Senior Data Analyst · 13 Years Experience</div>
+    <h1>Turning complex data<br>into <em>decisions that stick.</em></h1>
+    <p class="hero-sub">
+      I specialize in SQL, Python, Power BI, and Tableau — using them to translate
+      messy, real-world datasets into clear insights that teams actually act on.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View My Work →</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-years">
+    <span class="num">13</span>
+    <span class="label">Years of experience</span>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">By the numbers</div>
+      <h2 class="section-title">A career's worth of <em>impact.</em></h2>
+    </div>
+    <div class="impact-grid reveal">
+      <div class="impact-card">
+        <span class="impact-num">13+</span>
+        <span class="impact-label">Years of professional analytics experience</span>
+      </div>
+      <div class="impact-card">
+        <span class="impact-num">10M+</span>
+        <span class="impact-label">Rows of data analyzed across projects</span>
+      </div>
+      <div class="impact-card">
+        <span class="impact-num">20+</span>
+        <span class="impact-label">Dashboards & reporting systems delivered</span>
+      </div>
+      <div class="impact-card">
+        <span class="impact-num">5+</span>
+        <span class="impact-label">Industries served</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="two-col">
+      <div class="reveal">
+        <div class="section-header">
+          <div class="section-eyebrow">About me</div>
+          <h2 class="section-title">Experienced analyst.<br><em>Still curious.</em></h2>
+        </div>
+        <div class="about-text">
+          <p>
+            With <strong>13 years in data analytics</strong>, I've built reporting systems, run
+            A/B tests, designed executive dashboards, and delivered insights across
+            [your industries — e.g. retail, finance, healthcare]. I know what separates
+            analysis that gets acted on from analysis that collects dust.
+          </p>
+          <p>
+            My core toolkit is <strong>SQL and Python</strong> for data wrangling and analysis,
+            and <strong>Power BI and Tableau</strong> for visualization and stakeholder reporting.
+            I care about clarity — in code, in dashboards, and in how findings get communicated
+            to non-technical audiences.
+          </p>
+          <p>
+            This portfolio documents real projects: real datasets, real business problems, and the
+            reasoning behind every recommendation.
+          </p>
+          <div class="about-callout">
+            <p>"The gap between 'I know these tools' and 'here is what I did with them'
+            is exactly what a portfolio closes."</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-d">
+        <div class="section-header">
+          <div class="section-eyebrow">Career path</div>
+          <h2 class="section-title" style="font-size:1.3rem">Where I've been</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="tl-date">2022 – Present</div>
+            <div class="tl-role">Senior Data Analyst</div>
+            <div class="tl-place">Your Current Company</div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-date">2018 – 2022</div>
+            <div class="tl-role">Data Analyst</div>
+            <div class="tl-place">Previous Company</div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-date">2015 – 2018</div>
+            <div class="tl-role">Junior / Mid Data Analyst</div>
+            <div class="tl-place">Earlier Company</div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-date">2011 – 2015</div>
+            <div class="tl-role">Bachelor's in [Your Field]</div>
+            <div class="tl-place">Your University</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Tech stack</div>
+      <h2 class="section-title">Skills organized by <em>what they do.</em></h2>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-group">
+        <div class="skill-group-title">Querying & Storage</div>
+        <div class="skill-tags">
+          <span class="tag">SQL</span><span class="tag">PostgreSQL</span>
+          <span class="tag">MySQL</span><span class="tag">BigQuery</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Programming</div>
+        <div class="skill-tags">
+          <span class="tag">Python</span><span class="tag">Pandas</span>
+          <span class="tag">NumPy</span><span class="tag">Matplotlib</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Visualization & BI</div>
+        <div class="skill-tags">
+          <span class="tag">Power BI</span><span class="tag">Tableau</span>
+          <span class="tag">DAX</span><span class="tag">Power Query</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Analysis Methods</div>
+        <div class="skill-tags">
+          <span class="tag">A/B Testing</span><span class="tag">EDA</span>
+          <span class="tag">Segmentation</span><span class="tag">Forecasting</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Business Analytics</div>
+        <div class="skill-tags">
+          <span class="tag">KPI Design</span><span class="tag">Funnel Analysis</span>
+          <span class="tag">Retention</span><span class="tag">Reporting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Work samples</div>
+      <h2 class="section-title">Projects that show the <em>thinking.</em></h2>
+    </div>
+    <div class="projects-list reveal">
+
+      <div class="project-row">
+        <div>
+          <div class="project-num">01</div>
+          <div class="project-title">Customer Segmentation & Retention Analysis</div>
+          <p class="project-desc">Analyzed 99,000+ orders using RFM segmentation to discover that 97% of customers were one-time buyers — a critical revenue risk. Designed a coupon-based intervention and validated it through a statistically rigorous A/B test (p &lt; 0.001), surfacing a significant annual retention opportunity with 186% projected ROI.</p>
+          <a href="https://github.com/yourusername/project-repo" class="project-link" target="_blank">View on GitHub →</a>
+        </div>
+        <div class="project-tools">
+          <span class="project-tag">SQL</span><span class="project-tag">Python</span>
+          <span class="project-tag">A/B Testing</span><span class="project-tag">Power BI</span>
+        </div>
+      </div>
+
+      <div class="project-row">
+        <div>
+          <div class="project-num">02</div>
+          <div class="project-title">Executive Sales Dashboard & Reporting Automation</div>
+          <p class="project-desc">Replaced an 80–115 minute daily manual reporting process with a fully automated pipeline. Python scripts generate CSVs on schedule, Power Query ingests and cleans them, and Power BI serves results in a single executive dashboard — eliminating 30–40 hours of manual work per month.</p>
+          <a href="https://github.com/yourusername/project-repo" class="project-link" target="_blank">View on GitHub →</a>
+        </div>
+        <div class="project-tools">
+          <span class="project-tag">Python</span><span class="project-tag">Power Query</span>
+          <span class="project-tag">Power BI</span><span class="project-tag">Excel</span>
+        </div>
+      </div>
+
+      <div class="project-row">
+        <div>
+          <div class="project-num">03</div>
+          <div class="project-title">Multi-Source KPI Tracking Dashboard (Tableau)</div>
+          <p class="project-desc">Consolidated data from three separate source systems into a single live Tableau dashboard for a regional operations team. Reduced time-to-insight from weekly meetings to a self-serve view, enabling faster operational decisions without analyst involvement.</p>
+          <a href="https://github.com/yourusername/project-repo" class="project-link" target="_blank">View on GitHub →</a>
+        </div>
+        <div class="project-tools">
+          <span class="project-tag">Tableau</span><span class="project-tag">SQL</span>
+          <span class="project-tag">Data Modeling</span>
+        </div>
+      </div>
+
+      <div class="project-row">
+        <div>
+          <div class="project-num">04</div>
+          <div class="project-title">Loan Default Risk Analysis</div>
+          <p class="project-desc">Explored behavioral and demographic patterns across 4 loan outcome categories using Python EDA. Delivered a segmentation framework and lending recommendations that balance default risk against the cost of rejecting creditworthy applicants — framing analysis in real business tradeoffs.</p>
+          <a href="https://github.com/yourusername/project-repo" class="project-link" target="_blank">View on GitHub →</a>
+        </div>
+        <div class="project-tools">
+          <span class="project-tag">Python</span><span class="project-tag">EDA</span>
+          <span class="project-tag">Risk Analytics</span>
+        </div>
+      </div>
+
+      <div class="project-row">
+        <div>
+          <div class="project-num">05</div>
+          <div class="project-title">Cohort & Market Basket Analysis</div>
+          <p class="project-desc">Applied cohort analysis and market basket techniques to transactional data to identify purchasing patterns and optimal cross-sell timing. Findings directly informed a promotional calendar that improved repeat purchase rate by [X]% in the following quarter.</p>
+          <a href="https://github.com/yourusername/project-repo" class="project-link" target="_blank">View on GitHub →</a>
+        </div>
+        <div class="project-tools">
+          <span class="project-tag">SQL</span><span class="project-tag">Python</span>
+          <span class="project-tag">Tableau</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="two-col">
+      <div class="reveal">
+        <div class="section-header">
+          <div class="section-eyebrow">Work history</div>
+          <h2 class="section-title">13 years of <em>real problems.</em></h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="tl-date">2022 – Present</div>
+            <div class="tl-role">Senior Data Analyst</div>
+            <div class="tl-place">Your Current Company</div>
+            <p class="tl-desc">Replace with 2–3 specific accomplishments. E.g. "Led redesign of executive reporting across 4 business units. Built and maintained 12 Power BI dashboards used by C-suite weekly. Mentored 2 junior analysts on SQL and data modeling."</p>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-date">2018 – 2022</div>
+            <div class="tl-role">Data Analyst</div>
+            <div class="tl-place">Previous Company</div>
+            <p class="tl-desc">2–3 accomplishments with specific outcomes and numbers wherever possible.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-date">2015 – 2018</div>
+            <div class="tl-role">Junior Data Analyst</div>
+            <div class="tl-place">Earlier Company</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-d">
+        <div class="section-header">
+          <div class="section-eyebrow">Education & credentials</div>
+          <h2 class="section-title">Foundations &amp; <em>ongoing learning.</em></h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="tl-date">Add year</div>
+            <div class="tl-role">Certification: e.g. Microsoft PL-300 Power BI</div>
+            <div class="tl-place">Microsoft</div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-date">Add year</div>
+            <div class="tl-role">Certification: e.g. Google Advanced Data Analytics</div>
+            <div class="tl-place">Coursera / Google</div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-date">2011 – 2015</div>
+            <div class="tl-role">Bachelor's in [Your Field]</div>
+            <div class="tl-place">Your University</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Let's connect</div>
+      <h2 class="section-title">Open to the right <em>opportunity.</em></h2>
+    </div>
+    <p class="contact-sub reveal">13 years in and I'm still energized by new problems. If you have an interesting data challenge or role, let's talk.</p>
+    <div class="contact-links reveal">
+      <a href="mailto:you@email.com" class="contact-link">✉ you@email.com</a>
+      <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank">in LinkedIn</a>
+      <a href="https://github.com/yourusername" class="contact-link" target="_blank">⌥ GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with HTML, CSS &amp; GitHub Pages · <strong>Your Name</strong> · 2026</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: .12 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+
+</body>
+</html>
