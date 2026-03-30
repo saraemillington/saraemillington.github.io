@@ -86,7 +86,7 @@
       animation:girlFloat 5s ease-in-out infinite;
       z-index:3; pointer-events:none;
     }
-    @keyframes girlFloat { 0%,100%{transform:translateY(-50%) translateY(0);} 50%{transform:translateY(-50%) translateY(-12px);} }
+    /* @keyframes girlFloat { 0%,100%{transform:translateY(-50%) translateY(0);} 50%{transform:translateY(-50%) translateY(-12px);} } */
 
     .hero-badge {
       display:inline-flex; align-items:center; gap:8px;
@@ -202,7 +202,7 @@
     .edu-school { color:var(--muted); font-size:.86rem; }
     .edu-year { display:inline-block; margin-top:8px; font-size:.7rem; font-weight:700; color:var(--ok); background:rgba(52,211,153,.1); border:1px solid rgba(52,211,153,.25); padding:2px 10px; border-radius:100px; }
 
-    /* BLOGS */
+    /* BLOGS
     .blog-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:28px; }
     .blog-card { padding:26px; border-radius:16px; transition:transform .28s, border-color .28s; }
     .blog-card:hover { transform:translateY(-6px); border-color:rgba(167,139,250,.38); }
@@ -235,7 +235,7 @@
       transform:translateY(-1px);
       transition:transform .2s ease, border-color .2s ease;
     }
-    .blog-header-link:hover .blog-link-icon { transform:translate(2px,-1px); border-color:#4db8ff; }
+    .blog-header-link:hover .blog-link-icon { transform:translate(2px,-1px); border-color:#4db8ff; } */
 
     /* CONTACT */
     .contact-card { max-width:600px; text-align:center; padding:52px 40px; border-radius:22px; position:relative; overflow:hidden; }
@@ -534,7 +534,7 @@ achieving 186% ROI.</p>
         </div>
         <div class="skill-name">Business Analytics</div>
         <div class="skill-desc">Decision-focused analysis across customer behavior, retention, and experimentation.</div>
-        <div class="pill-row"><span class="pill">Funnel Analysis</span><span class="pill">Customer Segmentation</span><span class="pill">Retention Analysis</span><span class="pill">Experiment Design</span><span class="pill">KPI Tracking</span></div>
+        <div class="pill-row"><span class="pill">Funnel Analysis</span><span class="pill">Customer Segmentation</span><span class="pill">Retention Analysis</span><span class="pill">Experiment Design</span><span class="pill">KPI Tracking</span><span class="pill">Marketing Mix Modeling</span></div>
       </div>
       <div class="skill-card glass">
         <div class="skill-anim">
@@ -566,6 +566,36 @@ achieving 186% ROI.</p>
         <div class="skill-name">Cloud & Data Engineering</div>
         <div class="skill-desc">ETL design, storage, and analytics infrastructure on AWS and Azure.</div>
         <div class="pill-row"><span class="pill g">AWS S3</span><span class="pill g">Athena</span><span class="pill g">Azure</span><span class="pill g">Glue</span></div>
+      </div>
+      <div class="skill-card glass">
+        <div class="skill-anim">
+          <svg viewBox="0 0 40 40" width="40" height="40">
+            <ellipse cx="20" cy="16" rx="14" ry="9" fill="none" stroke="#34d399" stroke-width="1.8"><animate attributeName="rx" values="14;16;14" dur="3s" repeatCount="indefinite"/></ellipse>
+            <circle cx="20" cy="16" r="3" fill="#34d399"><animate attributeName="opacity" values="1;.4;1" dur="2s" repeatCount="indefinite"/></circle>
+            <line x1="20" y1="25" x2="10" y2="34" stroke="rgba(52,211,153,.5)" stroke-width="1.5"/>
+            <line x1="20" y1="25" x2="30" y2="34" stroke="rgba(52,211,153,.5)" stroke-width="1.5"/>
+            <circle cx="10" cy="35" r="2.5" fill="#34d399" opacity=".7"/>
+            <circle cx="30" cy="35" r="2.5" fill="#34d399" opacity=".7"/>
+          </svg>
+        </div>
+        <div class="skill-name">Cloud & Data Engineering</div>
+        <div class="skill-desc">ETL design, storage, and analytics infrastructure on AWS and Azure.</div>
+        <div class="pill-row"><span class="pill g">Fivetran</span><span class="pill g">Segment</span><span class="pill g">Google Tag Manager</span><span class="pill g">Github</span></div>
+      </div>
+      <div class="skill-card glass">
+        <div class="skill-anim">
+          <svg viewBox="0 0 40 40" width="40" height="40">
+            <ellipse cx="20" cy="16" rx="14" ry="9" fill="none" stroke="#34d399" stroke-width="1.8"><animate attributeName="rx" values="14;16;14" dur="3s" repeatCount="indefinite"/></ellipse>
+            <circle cx="20" cy="16" r="3" fill="#34d399"><animate attributeName="opacity" values="1;.4;1" dur="2s" repeatCount="indefinite"/></circle>
+            <line x1="20" y1="25" x2="10" y2="34" stroke="rgba(52,211,153,.5)" stroke-width="1.5"/>
+            <line x1="20" y1="25" x2="30" y2="34" stroke="rgba(52,211,153,.5)" stroke-width="1.5"/>
+            <circle cx="10" cy="35" r="2.5" fill="#34d399" opacity=".7"/>
+            <circle cx="30" cy="35" r="2.5" fill="#34d399" opacity=".7"/>
+          </svg>
+        </div>
+        <div class="skill-name">Marketing</div>
+        <div class="skill-desc">Marketing Mix Modeling, Campaign Attribution, Marketing to Sales Forecast.</div>
+        <div class="pill-row"><span class="pill g">MMM </span><span class="pill g">Google Ads</span><span class="pill g">Azure</span><span class="pill g">Glue</span></div>
       </div>
     </div>
   </section>
@@ -613,25 +643,60 @@ achieving 186% ROI.</li></ul></div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section class="page-section" id="experience">
-    <div class="reveal"><div class="sec-label">Professional Journey</div><h2 class="sec-title">Experience</h2></div>
-    <div class="edu-timeline reveal">
-      <article class="edu-item glass">
-        <div class="edu-degree">Research &amp; Content Analyst — IMARC Services Pvt. Ltd.</div>
-        <div class="edu-year">June 2023 – December 2024</div>
-        <ul class="edu-school" style="margin-top:10px; padding-left:18px;">
-          <li>Conducted secondary research and content analysis by collecting, validating, and synthesizing information from multiple external sources to support market intelligence deliverables.</li>
-          <li>Leveraged AI-powered research and content tools to streamline data extraction, information summarization, and report preparation, reducing manual effort by ~30% and improving workflow efficiency.</li>
-          <li>Mentored and trained junior team members on research workflows, data validation practices, and quality standards to ensure accuracy and consistency in client-facing reports.</li>
-        </ul>
-      </article>
-      <article class="edu-item glass">
-        <div class="edu-degree">Independent Contractor</div>
-        <div class="edu-year">2020 – 2023</div>
-        <div class="edu-school" style="margin-top:10px;">Completed freelance and contract-based project work across multiple assignments.</div>
-      </article>
-    </div>
-  </section>
+<section class="page-section" id="experience">
+  <div class="reveal">
+    <div class="sec-label">Professional Journey</div>
+    <h2 class="sec-title">Experience</h2>
+  </div>
+
+  <div class="edu-timeline reveal">
+
+    <article class="edu-item glass">
+      <div class="edu-degree">Senior Business Analyst, Marketing Operations & Analytics — Havenly Brands</div>
+      <div class="edu-year">May 2023 – September 2025</div>
+      <ul class="edu-school" style="margin-top:10px; padding-left:18px;">
+        <li>Led end-to-end pricing A/B test for the largest collection, designing experiment cohorts and statistical methodology, resulting in a 10% price increase implemented before Black Friday.</li>
+        <li>Built brand-level demand forecasts using marketing spend inputs, enabling top revenue-driving brands to meet or exceed targets for 10 consecutive months.</li>
+        <li>Developed a marketing mix model to evaluate digital channel attribution and cost efficiency, informing growth strategy and investment decisions.</li>
+        <li>Increased dashboard adoption by 50% through automated Looker dashboards standardizing channel performance, forecast accuracy, and goal tracking.</li>
+        <li>Defined KPI frameworks across six brands, aligning marketing, finance, and leadership on performance measurement.</li>
+        <li>Built and maintained dbt data models in Snowflake integrating Segment, Braze, Google Analytics, and internal systems to enable self-service analytics.</li>
+        <li>Delivered executive-level analyses, including modeling pricing, retail closures, and revenue composition to support board-level decision-making.</li>
+      </ul>
+    </article>
+
+    <article class="edu-item glass">
+      <div class="edu-degree">Marketing Analyst III — Hyland Software</div>
+      <div class="edu-year">June 2019 – May 2023</div>
+      <ul class="edu-school" style="margin-top:10px; padding-left:18px;">
+        <li>Defined performance KPIs using historical conversion data and built executive dashboards adopted by leadership, including the CMO as a primary reporting tool.</li>
+        <li>Conducted conversion, segmentation, and cohort analyses to identify trends and optimization opportunities.</li>
+        <li>Built and optimized SQL data models integrating campaign delivery, engagement, and operations data.</li>
+        <li>Developed automated Tableau dashboards, reducing manual reporting by 8 hours per week.</li>
+        <li>Presented insights to marketing and operations teams to drive data-informed decisions.</li>
+      </ul>
+    </article>
+
+    <article class="edu-item glass">
+      <div class="edu-degree">Business Analytics Consultant — PNC</div>
+      <div class="edu-year">May 2017 – June 2019</div>
+      <ul class="edu-school" style="margin-top:10px; padding-left:18px;">
+        <li>Developed Tableau dashboards and predictive models to support strategic decision-making.</li>
+        <li>Partnered with business teams on targeted, data-informed initiatives improving engagement and operational productivity.</li>
+      </ul>
+    </article>
+
+    <article class="edu-item glass">
+      <div class="edu-degree">Research Analyst, Federal Open Market Committee — Federal Reserve Bank of Cleveland</div>
+      <div class="edu-year">October 2012 – September 2016</div>
+      <ul class="edu-school" style="margin-top:10px; padding-left:18px;">
+        <li>Supported senior policymakers with quantitative analysis and high-stakes, time-sensitive insights.</li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
 
   <!-- EDUCATION -->
   <section class="page-section" id="education">
@@ -643,7 +708,7 @@ achieving 186% ROI.</li></ul></div>
     </div>
   </section>
 
-  <!-- BLOGS -->
+  <!-- BLOGS
   <section class="page-section" id="blogs">
     <div class="reveal">
       <div class="sec-label">Writing</div>
@@ -666,7 +731,7 @@ achieving 186% ROI.</li></ul></div>
         <a class="blog-btn" href="https://medium.com/@singhria.0829/power-bi-updates-2025-2026-practical-overview-with-examples-67bf6c4ae0d1" target="_blank" rel="noreferrer">Read Article</a>
       </article>
     </div>
-  </section>
+  </section> -->
 
   <!-- CONTACT -->
   <section class="page-section" id="contact" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
